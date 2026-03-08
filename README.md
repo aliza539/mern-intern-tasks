@@ -1,4 +1,10 @@
 # MERN Intern Tasks 
+##  Personal Information
+Name: Aliza Javed
+student mail:2024cs539@student.uet.edu.pk
+other Email: alizajaved194@gmail.com
+University: University Of Enginnering and Technology Lahore, Narowal Campus
+Semester: 4th Semester
 
 ## Projects Overview
 
