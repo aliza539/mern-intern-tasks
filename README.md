@@ -1,7 +1,5 @@
 # MERN Intern Tasks 
 
-A comprehensive collection of **MERN Stack** internship projects showcasing modern web development practices, including vanilla JavaScript applications, TypeScript conversions, and full-stack implementations.
-
 ## Projects Overview
 
 ### 1. **API Data Dashboard** 
