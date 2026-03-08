@@ -51,7 +51,7 @@ TypeScript version of the CLI task tracker with improved code structure.
 - **Frontend:** HTML5, CSS3(basic), Vanilla JavaScript
 - **Backend:** Node.js
 - **Languages:** JavaScript (ES6+), TypeScript
-- **APIs:** Fetch API, RESTful APIs
+- **APIs:** Fetch API
 - **Storage:** JSON, Local Storage, File System
 - **Tools:** npm, TypeScript Compiler
 
