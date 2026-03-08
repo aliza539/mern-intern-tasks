@@ -1,0 +1,21 @@
+{
+  "name": "bank-account-simulator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliza539/Bank-Account-Simulator.git"
+  },
+  "keywords": ["javascript", "closures", "prototypes", "oop", "factory-pattern"],
+  "author": "Aliza",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/aliza539/Bank-Account-Simulator/issues"
+  },
+  "homepage": "https://github.com/aliza539/Bank-Account-Simulator#readme"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "modular-shopping-cart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliza539/Modular-Shopping-Cart.git"
+  },
+  "keywords": [],
+  "author": "Aliza",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/aliza539/Modular-Shopping-Cart/issues"
+  },
+  "homepage": "https://github.com/aliza539/Modular-Shopping-Cart#readme"
+}

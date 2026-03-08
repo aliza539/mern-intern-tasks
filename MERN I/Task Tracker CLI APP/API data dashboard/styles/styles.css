@@ -1,0 +1,19 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.user {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.post {
+  margin-left: 20px;
+}
+
+.comment {
+  margin-left: 40px;
+  font-size: 0.9em;
+}
