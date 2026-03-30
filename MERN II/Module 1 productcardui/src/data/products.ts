@@ -1,3 +1,4 @@
+
 import { Product } from "../types/Product";
 
 export const products: Product[] = [
@@ -7,7 +8,7 @@ export const products: Product[] = [
     price: 1200,
     category: "electronics",
     rating: 5,
-    image: "/images/phone.jpg"
+    image: "/product images/iphone.jpg"
   },
   {
     id: 2,
@@ -15,7 +16,7 @@ export const products: Product[] = [
     price: 25,
     category: "clothing",
     rating: 4,
-    image: "/images/shirt.jpg"
+    image: "/product images/image-tshirt.jpg"
   },
   {
     id: 3,
@@ -23,6 +24,6 @@ export const products: Product[] = [
     price: 2000,
     category: "electronics",
     rating: 5,
-    image: "/images/laptop.jpg"
+    image: "/product images/laptop.jpg"
   }
 ];

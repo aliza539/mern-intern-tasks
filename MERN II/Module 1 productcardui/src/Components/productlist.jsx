@@ -1,13 +1,16 @@
+import React from "react";
 import ProductCard from "./Productcard";
+import "../styles/productlist.css";
 
 function ProductList({ products }) {
   return (
-    <div>
-      {products.map((p) => (
-        <ProductCard key={p.id} product={p} />
+    <div className="container">
+      {products.map((item) => (
+        <ProductCard key={item.id} {...item} />
       ))}
     </div>
   );
 }
+
 
 export default ProductList;

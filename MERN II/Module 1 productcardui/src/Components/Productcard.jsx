@@ -1,20 +1,25 @@
+import React from "react";
+import "../Styles/Productcard.css";
 import { useState } from "react";
 
-function ProductCard({ product }) {
+function ProductCard({name, price, image, rating }) {
   const [added, setAdded] = useState(false);
 
   return (
-    <div style={{ border: "1px solid gray", padding: "10px", margin: "10px" }}>
-      <img src={product.image} alt={product.name} width="150" />
-      <h2>{product.name}</h2>
-      <p>Price: ${product.price}</p>
-      <p>Rating: {product.rating} ⭐</p>
+    <div className="card">
+      <img src={image ? image : "/images/placeholder.png"} alt={name} />
+<h2>{name}</h2>
+<p className="price">Price: ${price}</p>
+<p className="rating">Rating: {rating} ⭐</p>
 
-      <button onClick={() => setAdded(!added)}>
-        {added ? "Added ✅" : "Add to Cart"}
+       <button
+        className={`btn ${added ? "added" : ""}`}
+        onClick={() => setAdded(!added)}
+      >
+        {added ? "Added" : "Add to Cart"}
       </button>
     </div>
+    
   );
 }
-
 export default ProductCard;

@@ -1,5 +1,5 @@
 
-
+import React from "react";
 function Filter( Props) {
   return (
     <select value={Props.category} onChange={(e) => Props.setCategory(e.target.value)}>
