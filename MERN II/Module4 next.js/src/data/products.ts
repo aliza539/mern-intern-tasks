@@ -7,7 +7,7 @@ export const products: Product[] = [
     price: 1200,
     category: "electronics",
     rating: 5,
-    image: "/product-images/iphone.jpg"
+    image: "/product images/iphone.jpg"
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const products: Product[] = [
     price: 25,
     category: "clothing",
     rating: 4,
-    image: "/product-images/tshirt.jpg"
+    image: "/product images/image-tshirt.jpg"
   },
   {
     id: 3,
@@ -23,6 +23,6 @@ export const products: Product[] = [
     price: 2000,
     category: "electronics",
     rating: 5,
-    image: "/product-images/laptop.jpg"
+    image: "/product images/laptop.jpg"
   }
 ];

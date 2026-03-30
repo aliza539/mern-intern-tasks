@@ -13,7 +13,7 @@ export default function Footer() {
           Privacy Policy
         </a>
       </div>
-      <p className="text-gray-400 text-xs border-t border-gray-700 pt-4">Made with ❤️</p>
+      <p className="text-gray-400 text-xs border-t border-gray-700 pt-4"></p>
     </footer>
   );
 }
