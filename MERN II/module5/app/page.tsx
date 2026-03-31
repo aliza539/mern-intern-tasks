@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/footer";
 import CartDrawer from "@/components/ui/carddrawer";
 import ThemeToggle from "@/components/ui/themeToggle";
 
@@ -29,7 +27,6 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
       <motion.main
         initial="hidden"
         animate="visible"
@@ -139,7 +136,6 @@ export default function Home() {
         {/* Cart Drawer */}
         <CartDrawer />
       </motion.main>
-      <Footer />
     </>
   );
 }

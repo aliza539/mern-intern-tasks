@@ -1,13 +1,9 @@
 "use client";
-
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/footer";
 import { motion } from "framer-motion";
 
 export default function CartPage() {
   return (
     <>
-      <Navbar />
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -25,7 +21,6 @@ export default function CartPage() {
           </div>
         </div>
       </motion.main>
-      <Footer />
     </>
   );
 }

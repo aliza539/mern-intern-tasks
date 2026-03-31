@@ -5,8 +5,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { products } from "@/data/product";
 import { Product } from "@/types/Product";
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/footer";
+
+
 import Link from "next/link";
 
 export default function ProductDetail({ params }: { params: { id: string } }) {
@@ -15,13 +15,9 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
 
   if (!product) {
     return (
-      <>
-        <Navbar />
-        <div className="flex items-center justify-center min-h-screen">
-          <p className="text-gray-500 dark:text-gray-400">Product not found</p>
-        </div>
-        <Footer />
-      </>
+      <div className="flex items-center justify-center min-h-screen">
+        <p className="text-gray-500 dark:text-gray-400">Product not found</p>
+      </div>
     );
   }
 
@@ -29,7 +25,6 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <Navbar />
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -152,7 +147,6 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
           </motion.div>
         </div>
       </motion.main>
-      <Footer />
     </>
   );
 }

@@ -3,13 +3,10 @@
 import ProductList from "@/components/ui/productlist";
 import { products } from "@/data/product";
 import { motion } from "framer-motion";
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/footer";
 
 export default function ProductsPage() {
   return (
     <>
-      <Navbar />
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -26,7 +23,6 @@ export default function ProductsPage() {
           <ProductList products={products} />
         </div>
       </motion.main>
-      <Footer />
     </>
   );
 }
