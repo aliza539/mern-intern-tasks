@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+<<<<<<< HEAD
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -26,30 +27,16 @@ body {
 }
 
 /* Smooth transitions for dark mode */
+=======
+>>>>>>> ebe2d2ceff5ae86a9640e17135171a770c4318ed
 * {
-  @apply transition-colors duration-300;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-@media (prefers-color-scheme: dark) {
-  ::-webkit-scrollbar-track {
-    background: #1e293b;
-  }
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+html,
+body {
+  height: 100%;
+  width: 100%;
 }

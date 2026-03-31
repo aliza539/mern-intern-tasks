@@ -1,82 +1,75 @@
-"use client";
+'use client';
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/products", label: "Products" },
-    { href: "/auth/login", label: "Login" },
-    { href: "/auth/register", label: "Register" },
-  ];
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
 
   return (
-    <nav className="bg-white dark:bg-slate-950 text-gray-900 dark:text-white px-6 py-4 shadow-lg sticky top-0 z-50">
+    <nav className="bg-slate-900 text-white px-6 py-4 shadow-lg">
       <div className="flex justify-between items-center">
-        <Link href="/" className="font-bold text-xl hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
-          Store
-        </Link>
+        <div className="text-2xl font-bold">Store</div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium"
-            >
-              {item.label}
-            </Link>
-          ))}
+          <Link href="/" className="hover:text-blue-400 transition-colors duration-300 font-medium">
+            Home
+          </Link>
+          <Link href="/products" className="hover:text-blue-400 transition-colors duration-300 font-medium">
+            Products
+          </Link>
+          <Link href="/cart" className="hover:text-blue-400 transition-colors duration-300 font-medium">
+            Cart
+          </Link>
+          <Link href="/auth/login" className="hover:text-blue-400 transition-colors duration-300 font-medium">
+            Login
+          </Link>
+          <Link href="/auth/register" className="hover:text-blue-400 transition-colors duration-300 font-medium">
+            Register
+          </Link>
         </div>
 
         {/* Mobile Hamburger Button */}
         <button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={toggleMenu}
           className="md:hidden flex flex-col gap-1"
           aria-label="Toggle menu"
         >
-          <motion.div
-            animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 8 : 0 }}
-            className="w-6 h-0.5 bg-gray-900 dark:bg-white"
-          />
-          <motion.div
-            animate={{ opacity: isOpen ? 0 : 1 }}
-            className="w-6 h-0.5 bg-gray-900 dark:bg-white"
-          />
-          <motion.div
-            animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -8 : 0 }}
-            className="w-6 h-0.5 bg-gray-900 dark:bg-white"
-          />
+          <span className={`w-6 h-0.5 bg-white transition-transform ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+          <span className={`w-6 h-0.5 bg-white transition-opacity ${isOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`w-6 h-0.5 bg-white transition-transform ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden mt-4 flex flex-col gap-3"
-          >
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium px-3 py-2"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isOpen && (
+        <div className="md:hidden mt-4 flex flex-col gap-3 pb-4">
+          <Link href="/" onClick={closeMenu} className="hover:text-blue-400 transition-colors duration-300 font-medium px-3 py-2">
+            Home
+          </Link>
+          <Link href="/products" onClick={closeMenu} className="hover:text-blue-400 transition-colors duration-300 font-medium px-3 py-2">
+            Products
+          </Link>
+          <Link href="/cart" onClick={closeMenu} className="hover:text-blue-400 transition-colors duration-300 font-medium px-3 py-2">
+            Cart
+          </Link>
+          <Link href="/auth/login" onClick={closeMenu} className="hover:text-blue-400 transition-colors duration-300 font-medium px-3 py-2">
+            Login
+          </Link>
+          <Link href="/auth/register" onClick={closeMenu} className="hover:text-blue-400 transition-colors duration-300 font-medium px-3 py-2">
+            Register
+          </Link>
+        </div>
+      )}
     </nav>
   );
 }
