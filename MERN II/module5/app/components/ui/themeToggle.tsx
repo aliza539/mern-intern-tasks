@@ -2,9 +2,27 @@
 
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <button
+        className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800"
+        disabled
+        aria-label="Toggle theme"
+      >
+        ☀️
+      </button>
+    );
+  }
 
   return (
     <motion.button
