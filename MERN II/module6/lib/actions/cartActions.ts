@@ -10,7 +10,7 @@ type CartItem = {
 
 // ADD TO CART
 export async function addToCart(productId: number, qty: number) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const cart = cookieStore.get("cart");
 
   let items: CartItem[] = cart ? JSON.parse(cart.value) : [];
@@ -24,7 +24,7 @@ export async function addToCart(productId: number, qty: number) {
 
 // REMOVE FROM CART
 export async function removeFromCart(productId: number) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const cart = cookieStore.get("cart");
 
   if (!cart) return;

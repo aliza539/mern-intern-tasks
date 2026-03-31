@@ -3,12 +3,9 @@
 import { useState } from "react";
 import { products } from "@/data/product";
 import { Product } from "@/types/Product";
-<<<<<<< HEAD
-
-
-=======
->>>>>>> ebe2d2ceff5ae86a9640e17135171a770c4318ed
 import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function ProductDetail({ params }: { params: { id: string } }) {
   const product = products.find((p: Product) => p.id === parseInt(params.id));
@@ -16,22 +13,15 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
 
   if (!product) {
     return (
-<<<<<<< HEAD
       <div className="flex items-center justify-center min-h-screen">
         <p className="text-gray-500 dark:text-gray-400">Product not found</p>
       </div>
-=======
-      <main className="flex items-center justify-center min-h-screen">
-        <p className="text-gray-500">Product not found</p>
-      </main>
->>>>>>> ebe2d2ceff5ae86a9640e17135171a770c4318ed
     );
   }
 
   const images = product.images || [product.image];
 
   return (
-<<<<<<< HEAD
     <>
       <motion.main
         initial={{ opacity: 0 }}
@@ -57,20 +47,6 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                 priority
               />
             </motion.div>
-=======
-    <main className="min-h-screen bg-white flex items-center justify-center py-12 px-4">
-      <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Image Gallery */}
-        <div className="flex flex-col gap-4">
-          {/* Main Image */}
-          <div className="relative w-full aspect-square bg-gray-200 rounded-xl overflow-hidden">
-            <img
-              src={images[selectedImageIndex]}
-              alt={product.name}
-              className="w-full h-full object-cover"
-            />
-          </div>
->>>>>>> ebe2d2ceff5ae86a9640e17135171a770c4318ed
 
           {/* Thumbnail Images */}
           <div className="flex gap-3 overflow-x-auto">
@@ -84,9 +60,11 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                     : "border-gray-300"
                 }`}
               >
-                <img
+                <Image
                   src={image}
                   alt={`${product.name} ${idx + 1}`}
+                  width={80}
+                  height={80}
                   className="w-full h-full object-cover"
                 />
               </button>
@@ -151,12 +129,8 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
             </button>
           </div>
         </div>
-<<<<<<< HEAD
+        </div>
       </motion.main>
     </>
-=======
-      </div>
-    </main>
->>>>>>> ebe2d2ceff5ae86a9640e17135171a770c4318ed
   );
 }

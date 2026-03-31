@@ -1,9 +1,9 @@
 import { cookies } from "next/headers";
-import { products } from "@/data/products";
+import { products } from "@/data/product";
 import { removeFromCart } from "@/lib/actions/cartActions";
 
-export default function CartPage() {
-  const cookieStore = cookies();
+export default async function CartPage() {
+  const cookieStore = await cookies();
   const cart = cookieStore.get("cart");
 
   let items = cart ? JSON.parse(cart.value) : [];
