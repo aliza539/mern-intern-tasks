@@ -1,0 +1,85 @@
+import { Product } from "@/types/Product";
+
+export const products: Product[] = [
+  {
+    id: 1,
+    name: "Premium Headphones",
+    price: 129.99,
+    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=800&h=800&fit=crop",
+    ],
+    rating: 4.5,
+    description: "High-quality wireless headphones with noise cancellation",
+    category: "Electronics",
+  },
+  {
+    id: 2,
+    name: "Smartwatch",
+    price: 199.99,
+    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1505941488111-541d20efaaa0?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=800&h=800&fit=crop",
+    ],
+    rating: 4.8,
+    description: "Advanced fitness tracking smartwatch with heart rate monitor",
+    category: "Wearables",
+  },
+  {
+    id: 3,
+    name: "Wireless Earbuds",
+    price: 89.99,
+    image: "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500&h=500&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&h=800&fit=crop",
+    ],
+    rating: 4.3,
+    description: "Compact wireless earbuds with 24-hour battery life",
+    category: "Audio",
+  },
+  {
+    id: 4,
+    name: "USB-C Cable",
+    price: 19.99,
+    image: "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=500&h=500&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1617638924702-92f37c94e5d3?w=800&h=800&fit=crop",
+    ],
+    rating: 4.6,
+    description: "Durable 6ft USB-C charging and data transfer cable",
+    category: "Cables",
+  },
+  {
+    id: 5,
+    name: "Phone Stand",
+    price: 24.99,
+    image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=500&h=500&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&h=800&fit=crop",
+    ],
+    rating: 4.4,
+    description: "Adjustable aluminum phone stand for all sizes",
+    category: "Accessories",
+  },
+  {
+    id: 6,
+    name: "Portable Charger",
+    price: 49.99,
+    image: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=500&h=500&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1616348436552-1bca63e50f16?w=800&h=800&fit=crop",
+    ],
+    rating: 4.7,
+    description: "20000mAh portable power bank with fast charging",
+    category: "Power",
+  },
+];
