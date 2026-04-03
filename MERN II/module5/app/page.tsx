@@ -63,9 +63,9 @@ export default function Home() {
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-5xl mx-auto px-4 pb-20"
         >
           {[
-            { icon: "🚀", title: "Fast Delivery", desc: "Quick and reliable shipping" },
-            { icon: "💳", title: "Secure Payment", desc: "Safe transaction guarantee" },
-            { icon: "✨", title: "Quality Products", desc: "Premium selection only" },
+            { icon: "", title: "Fast Delivery", desc: "Quick and reliable shipping" },
+            { icon: "", title: "Secure Payment", desc: "Safe transaction guarantee" },
+            { icon: "", title: "Quality Products", desc: "Premium selection only" },
           ].map((feature, idx) => (
             <motion.div key={idx} variants={itemVariants} className="p-6 bg-white dark:bg-slate-900 rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <div className="text-4xl mb-3">{feature.icon}</div>
