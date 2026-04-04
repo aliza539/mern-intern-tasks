@@ -2,31 +2,31 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  const sessionCookie = request.cookies.get("session");
-  const sessionEmail = sessionCookie?.value ? decodeURIComponent(sessionCookie.value) : null;
+  const sessionCookie = request.cookies.get("session")?.value;
+  // Agar cookie exist karti hai par empty string hai toh usay null samjhein
+  const sessionEmail = sessionCookie && sessionCookie !== "" ? decodeURIComponent(sessionCookie) : null;
   
-  // 🕵️‍♂️ ROLE DETECTION (Agar cookie nahi bhi hai, toh email se pehchano)
   const roleCookie = request.cookies.get("role")?.value;
   const isActuallyAdmin = sessionEmail?.toLowerCase() === "admin@store.com" || roleCookie === "admin";
 
   const { pathname } = request.nextUrl;
 
-  // 1. Agar banda LOGIN hai aur ghalti se Login/Register page pe jaye
+  // 1. Agar banda LOGIN hai aur Login/Register page pe jaye -> Bhej do dashboard/products pe
   if (sessionEmail && (pathname.startsWith("/auth/login") || pathname.startsWith("/auth/register"))) {
     const url = isActuallyAdmin ? "/admin/dashboard" : "/products";
     return NextResponse.redirect(new URL(url, request.url));
   }
 
-  // 2. Agar banda login NAHI hai aur Private pages khol raha hai
+  // 2. Agar banda login NAHI hai (ya session empty hai) aur Private pages khol raha hai
   if (!sessionEmail) {
-    if (pathname.startsWith("/cart") || pathname.startsWith("/admin") || pathname.startsWith("/products")) {
+    const privatePaths = ["/cart", "/admin", "/products", "/home"];
+    if (privatePaths.some(path => pathname.startsWith(path))) {
       return NextResponse.redirect(new URL("/auth/login", request.url));
     }
   }
 
-  // 3. Admin protection (Zabardasti redirect agar admin nahi hai)
+  // 3. Admin protection: Sirf admin hi /admin paths access kar sake
   if (pathname.startsWith("/admin") && !isActuallyAdmin) {
-    // Agar normal user admin panel kholne ki koshish kare, usay products pe phenk do
     return NextResponse.redirect(new URL("/products", request.url));
   }
 
@@ -34,6 +34,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Products ko bhi matcher mein daal dein taake guest user na dekh sakay (optional)
-  matcher: ["/cart/:path*", "/admin/:path*", "/auth/:path*", "/products/:path*"],
+  // Sabhi private routes ko matcher mein shamil karein
+  matcher: ["/cart/:path*", "/admin/:path*", "/auth/:path*", "/products/:path*", "/home/:path*"],
 };

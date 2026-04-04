@@ -2,11 +2,13 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation"; // ✅ Sahi Import
 import ThemeToggle from "./component/themeToggle";
 import Footer from "./component/footer";
 
 export default function WelcomePage() {
   const [role, setRole] = useState<string | null>(null);
+  const router = useRouter(); // ✅ Initialize router
 
   useEffect(() => {
     const getCookie = (name: string) => {
@@ -31,8 +33,12 @@ export default function WelcomePage() {
   const handleLogout = () => {
     document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    setRole(null);
-    window.location.reload(); 
+    
+    router.push("/auth/login");
+    // Browser wala timeout use karein
+    window.setTimeout(() => {
+      router.refresh();
+    }, 100);
   };
 
   return (

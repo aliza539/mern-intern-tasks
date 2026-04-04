@@ -3,35 +3,39 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import ThemeToggle from "@/app/component/themeToggle";
+import ThemeToggle from "@/app/component/themeToggle"; // Check karlein ye path sahi hai na?
 
 export default function Navbar() {
   const router = useRouter();
-  // State ko batana paray ga ke ye string ho sakti hai ya null
   const [role, setRole] = useState<string | null>(null);
 
   useEffect(() => {
-    // Cookie nikalne ka sabse asan aur error-free tareeka
-    const cookies = document.cookie.split("; ");
-    const roleCookie = cookies.find((row) => row.startsWith("role="));
-    
-    if (roleCookie) {
-      const roleValue = roleCookie.split("=")[1];
-      setRole(roleValue); 
+    const getCookie = (name: string) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop()?.split(';').shift();
+      return null;
+    };
+
+    const sessionEmail = getCookie("session");
+    if (sessionEmail && decodeURIComponent(sessionEmail).toLowerCase() === "admin@store.com") {
+      setRole("admin");
+    } else if (sessionEmail) {
+      setRole("user");
     }
   }, []);
 
   const handleLogout = () => {
-    // 1. Cookies delete karein
-    document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie = "role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    
-    // 2. State khali karein taake button foran gayab ho jaye
-    setRole(null);
-    
-    // 3. Welcome page par bhej dein
-    router.push("/");
-    router.refresh();
+    // 🔥 Sabse Powerful Logout: Har possible path se cookie delete karo
+    // Kyunke aapka folder structure nested hai, isliye ye paths lazmi hain
+    const paths = ["/", "/user", "/admin", "/auth", "/api"];
+    paths.forEach(p => {
+      document.cookie = `session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${p};`;
+      document.cookie = `role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${p};`;
+    });
+
+    // ✨ Forceful Redirect: window.location use karne se Middleware fresh check karega
+    window.location.href = "/auth/login";
   };
 
   return (
@@ -41,16 +45,15 @@ export default function Navbar() {
       </Link>
       
       <div className="flex gap-8 items-center font-medium">
-        <Link href="../home" className="hover:text-blue-400 transition-colors">Home</Link>
-        <Link href="./products" className="hover:text-blue-400 transition-colors">Products</Link>
-        <Link href="./cart" className="hover:text-blue-400 transition-colors">Cart</Link>
+        {/* ✅ PATH FIX: Root se start karein taake nesting ka masla na ho */}
+        <Link href="/user/home" className="hover:text-blue-400 transition-colors">Home</Link>
+        <Link href="/products" className="hover:text-blue-400 transition-colors">Products</Link>
+        <Link href="/cart" className="hover:text-blue-400 transition-colors">Cart</Link>
 
-   
         {role === "admin" && (
-         
           <Link 
             href="/admin/dashboard" 
-            className="bg-amber-500 text-white px-4 py-1.5 rounded font-bold hover:bg-amber-600 transition-all shadow-[0_0_15px_rgba(245,158,11,0.4)]"
+            className="bg-amber-500 text-white px-4 py-1.5 rounded font-bold hover:bg-amber-600 transition-all shadow-lg"
           >
             Dashboard ⚙️
           </Link>
