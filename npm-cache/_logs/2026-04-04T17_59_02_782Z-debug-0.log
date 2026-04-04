@@ -1,0 +1,18 @@
+0 verbose cli D:\Program Files\nodejs\node.exe C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.12.1
+2 info using node@v24.12.0
+3 silly config load:file:C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config load:file:d:\mern-intern-tasks\.npmrc
+5 silly config load:file:C:\Users\T470s\.npmrc
+6 silly config load:file:C:\Users\T470s\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm config get prefix
+8 verbose argv "config" "get" "prefix"
+9 verbose logfile logs-max:10 dir:D:\mern-intern-tasks\npm-cache\_logs\2026-04-04T17_59_02_782Z-
+10 verbose logfile D:\mern-intern-tasks\npm-cache\_logs\2026-04-04T17_59_02_782Z-debug-0.log
+11 silly logfile done cleaning log files
+12 verbose cwd d:\mern-intern-tasks
+13 verbose os Windows_NT 10.0.19045
+14 verbose node v24.12.0
+15 verbose npm  v11.12.1
+16 verbose exit 0
+17 info ok

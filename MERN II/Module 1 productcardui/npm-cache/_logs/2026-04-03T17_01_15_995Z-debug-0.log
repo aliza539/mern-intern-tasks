@@ -1,0 +1,107 @@
+0 verbose cli D:\Program Files\nodejs\node.exe C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.12.1
+2 info using node@v24.12.0
+3 silly config load:file:C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config load:file:d:\mern-intern-tasks\MERN II\Module 1 productcardui\.npmrc
+5 silly config load:file:C:\Users\T470s\.npmrc
+6 silly config load:file:C:\Users\T470s\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm install
+8 verbose argv "install" "--package-lock-only"
+9 verbose logfile logs-max:10 dir:D:\mern-intern-tasks\MERN II\Module 1 productcardui\npm-cache\_logs\2026-04-03T17_01_15_995Z-
+10 verbose logfile D:\mern-intern-tasks\MERN II\Module 1 productcardui\npm-cache\_logs\2026-04-03T17_01_15_995Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+13 silly idealTree buildDeps
+14 silly audit bulk request {
+14 silly audit   '@esbuild/android-arm': [ '0.18.20' ],
+14 silly audit   '@esbuild/android-arm64': [ '0.18.20' ],
+14 silly audit   '@esbuild/android-x64': [ '0.18.20' ],
+14 silly audit   '@esbuild/darwin-arm64': [ '0.18.20' ],
+14 silly audit   '@esbuild/darwin-x64': [ '0.18.20' ],
+14 silly audit   '@esbuild/freebsd-arm64': [ '0.18.20' ],
+14 silly audit   '@esbuild/freebsd-x64': [ '0.18.20' ],
+14 silly audit   '@esbuild/linux-arm': [ '0.18.20' ],
+14 silly audit   '@esbuild/linux-arm64': [ '0.18.20' ],
+14 silly audit   '@esbuild/linux-ia32': [ '0.18.20' ],
+14 silly audit   '@esbuild/linux-loong64': [ '0.18.20' ],
+14 silly audit   '@esbuild/linux-mips64el': [ '0.18.20' ],
+14 silly audit   '@esbuild/linux-ppc64': [ '0.18.20' ],
+14 silly audit   '@esbuild/linux-riscv64': [ '0.18.20' ],
+14 silly audit   '@esbuild/linux-s390x': [ '0.18.20' ],
+14 silly audit   '@esbuild/linux-x64': [ '0.18.20' ],
+14 silly audit   '@esbuild/netbsd-x64': [ '0.18.20' ],
+14 silly audit   '@esbuild/openbsd-x64': [ '0.18.20' ],
+14 silly audit   '@esbuild/sunos-x64': [ '0.18.20' ],
+14 silly audit   '@esbuild/win32-arm64': [ '0.18.20' ],
+14 silly audit   '@esbuild/win32-ia32': [ '0.18.20' ],
+14 silly audit   '@esbuild/win32-x64': [ '0.18.20' ],
+14 silly audit   esbuild: [ '0.18.20' ],
+14 silly audit   fsevents: [ '2.3.3' ],
+14 silly audit   'js-tokens': [ '4.0.0' ],
+14 silly audit   'loose-envify': [ '1.4.0' ],
+14 silly audit   nanoid: [ '3.3.11' ],
+14 silly audit   picocolors: [ '1.1.1' ],
+14 silly audit   postcss: [ '8.5.8' ],
+14 silly audit   react: [ '18.3.1' ],
+14 silly audit   'react-dom': [ '18.3.1' ],
+14 silly audit   rollup: [ '3.30.0' ],
+14 silly audit   scheduler: [ '0.23.2' ],
+14 silly audit   'source-map-js': [ '1.2.1' ],
+14 silly audit   vite: [ '4.5.14' ]
+14 silly audit }
+15 http fetch GET 200 https://registry.npmjs.org/npm 1167ms
+16 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 1104ms
+17 silly audit report {
+17 silly audit report   esbuild: [
+17 silly audit report     {
+17 silly audit report       id: 1102341,
+17 silly audit report       url: 'https://github.com/advisories/GHSA-67mh-4wv8-2f99',
+17 silly audit report       title: 'esbuild enables any website to send any requests to the development server and read the response',
+17 silly audit report       severity: 'moderate',
+17 silly audit report       vulnerable_versions: '<=0.24.2',
+17 silly audit report       cwe: [Array],
+17 silly audit report       cvss: [Object]
+17 silly audit report     }
+17 silly audit report   ],
+17 silly audit report   vite: [
+17 silly audit report     {
+17 silly audit report       id: 1107323,
+17 silly audit report       url: 'https://github.com/advisories/GHSA-g4jq-h2w9-997c',
+17 silly audit report       title: 'Vite middleware may serve files starting with the same name with the public directory',
+17 silly audit report       severity: 'low',
+17 silly audit report       vulnerable_versions: '<=5.4.19',
+17 silly audit report       cwe: [Array],
+17 silly audit report       cvss: [Object]
+17 silly audit report     },
+17 silly audit report     {
+17 silly audit report       id: 1107327,
+17 silly audit report       url: 'https://github.com/advisories/GHSA-jqfw-vq24-v9c3',
+17 silly audit report       title: "Vite's `server.fs` settings were not applied to HTML files",
+17 silly audit report       severity: 'low',
+17 silly audit report       vulnerable_versions: '<=5.4.19',
+17 silly audit report       cwe: [Array],
+17 silly audit report       cvss: [Object]
+17 silly audit report     },
+17 silly audit report     {
+17 silly audit report       id: 1109132,
+17 silly audit report       url: 'https://github.com/advisories/GHSA-93m4-6634-74q7',
+17 silly audit report       title: 'vite allows server.fs.deny bypass via backslash on Windows',
+17 silly audit report       severity: 'moderate',
+17 silly audit report       vulnerable_versions: '>=4.5.3 <5.0.0',
+17 silly audit report       cwe: [Array],
+17 silly audit report       cvss: [Object]
+17 silly audit report     }
+17 silly audit report   ]
+17 silly audit report }
+18 silly packumentCache corgi:https://registry.npmjs.org/esbuild cache-miss
+19 silly packumentCache corgi:https://registry.npmjs.org/vite cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/esbuild 1595ms (cache miss)
+21 silly packumentCache corgi:https://registry.npmjs.org/esbuild set size:undefined disposed:false
+22 http fetch GET 200 https://registry.npmjs.org/vite 2913ms (cache miss)
+23 silly packumentCache corgi:https://registry.npmjs.org/vite set size:undefined disposed:false
+24 verbose cwd d:\mern-intern-tasks\MERN II\Module 1 productcardui
+25 verbose os Windows_NT 10.0.19045
+26 verbose node v24.12.0
+27 verbose npm  v11.12.1
+28 verbose exit 0
+29 info ok

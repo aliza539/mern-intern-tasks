@@ -1,6 +1,6 @@
 // Simple in-memory user storage
 // In production, this should be replaced with a database
-let users: { email: string; password: string }[] = [];
+const users: { email: string; password: string }[] = [];
 
 export function getUsers() {
   return users;

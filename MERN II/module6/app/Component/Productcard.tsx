@@ -14,13 +14,13 @@ type Props = {
 
 export default function ProductCard({ id, name, price, image, rating }: Props) {
   const [loading, setLoading] = useState(false);
-  const { addToCart } = useCart(); // Context for instant UI update
+  const { addToCart } = useCart(); 
 
   const handleAdd = async () => {
     setLoading(true);
-    // 1. Update Server Cookie
+    
     await addToCartAction(id, 1);
-    // 2. Update Client Context
+    
     addToCart(id, 1);
     setLoading(false);
     alert("Added to Cart!");
