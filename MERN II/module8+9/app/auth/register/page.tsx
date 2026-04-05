@@ -1,122 +1,68 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { RegisterSchema } from "@/lib/schemas/auth";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import Link from "next/link";
-import { FormEvent, useState } from "react";
 
 export default function RegisterPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState("");
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setError("");
-  setLoading(true);
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
+    resolver: zodResolver(RegisterSchema)
+  });
 
-  try {
-    // 💡 Pehle frontend pe hi check kar lo taake API tak baat hi na jaye
-    if (password !== confirmPassword) {
-      throw new Error("Passwords do not match!");
-    }
-    if (password.length < 6) {
-      throw new Error("Password must be at least 6 characters!");
-    }
-
-    const response = await fetch("/api/register", { 
+  const onSubmit = async (values: any) => {
+    setServerError("");
+    const res = await fetch("/api/register", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      // 🚨 Sabse zaroori: confirmPassword yahan bhejna LAZMI hai
-      body: JSON.stringify({ 
-        email: email, 
-        password: password, 
-        confirmPassword: confirmPassword 
-      }), 
+      body: JSON.stringify(values),
     });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.error || "Registration failed");
+    const data = await res.json();
+    if (res.ok) {
+      alert("Registration Successful!");
+      router.push(data.redirectTo || "/auth/login");
+    } else {
+      setServerError(data.error || "Registration Failed");
     }
+  };
 
-    if (data.success) {
-      router.push(data.redirectTo); 
-      router.refresh();
-    }
-  } catch (err) {
-    setError(err instanceof Error ? err.message : "An error occurred");
-  } finally {
-    setLoading(false);
-  }
-};
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4 dark:bg-slate-950">
-      <div className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-xl w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center text-slate-900 dark:text-white">Create Account</h1>
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950 p-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-xl w-full max-w-md space-y-4">
+        <h2 className="text-2xl font-bold text-center text-slate-800 dark:text-white">Create Account</h2>
+        
+        {serverError && <p className="text-red-500 text-sm bg-red-50 p-2 rounded">{serverError}</p>}
 
-        {error && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded-lg text-sm">
-            {error}
-          </div>
-        )}
+        <div>
+          <label className="text-sm font-medium dark:text-gray-200">Email</label>
+          <input {...register("email")} className="w-full p-2 border rounded-md text-black" placeholder="name@example.com" />
+          {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message as string}</p>}
+        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-black"
-              placeholder="name@example.com"
-            />
-          </div>
+        <div>
+          <label className="text-sm font-medium dark:text-gray-200">Password</label>
+          <input type="password" {...register("password")} className="w-full p-2 border rounded-md text-black" />
+          {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message as string}</p>}
+        </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-black"
-              placeholder="••••••••"
-            />
-          </div>
+        <div>
+          <label className="text-sm font-medium dark:text-gray-200">Confirm Password</label>
+          <input type="password" {...register("confirmPassword")} className="w-full p-2 border rounded-md text-black" />
+          {errors.confirmPassword && <p className="text-red-500 text-xs mt-1">{errors.confirmPassword.message as string}</p>}
+        </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Confirm Password</label>
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-black"
-              placeholder="••••••••"
-            />
-          </div>
+        <button type="submit" disabled={isSubmitting} className="w-full bg-blue-600 text-white py-2 rounded-lg font-bold hover:bg-blue-700 transition-all">
+          {isSubmitting ? "Creating Account..." : "Register Now"}
+        </button>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg font-bold hover:bg-blue-700 disabled:bg-gray-400 transition-all"
-          >
-            {loading ? "Registering..." : "Sign Up"}
-          </button>
-        </form>
-
-        <p className="text-center mt-6 text-sm text-gray-600 dark:text-gray-400">
-          Already have an account?{" "}
-          <Link href="/auth/login" className="text-blue-600 font-semibold hover:underline">
-            Login here
-          </Link>
+        <p className="text-center text-sm text-gray-500">
+          Already have an account? <Link href="/auth/login" className="text-blue-600 hover:underline">Login</Link>
         </p>
-      </div>
+      </form>
     </div>
   );
 }

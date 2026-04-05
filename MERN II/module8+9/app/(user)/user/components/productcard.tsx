@@ -5,22 +5,28 @@ import { useCart } from "@/app/(user)/user/context/CartContext";
 import { addToCartAction } from "@/app/(user)/user/actions/cartaction";
 import { useRouter } from "next/navigation";
 import { Product } from "@/app/(user)/user/types";
+import { useWishlistStore } from "@/app/store/useWishliststore";
+import { Heart, ShoppingCart, Star } from "lucide-react"; // Professional Icons
 
 export default function ProductCard({ id, name, price, image, rating }: Product) {
   const [loading, setLoading] = useState(false);
-  const { addToCart } = useCart(); 
+  const { addToCart } = useCart();
   const router = useRouter();
 
-  const handleAdd = async () => {
+  // Wishlist Logic
+  const { items, toggleWishlist } = useWishlistStore();
+  const isWishlisted = items.includes(id);
+
+  const handleAdd = async (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigation if card is wrapped in a Link
     setLoading(true);
-    
-  
+
     const response = await addToCartAction(id, 1);
-    
+
     if (!response.success) {
       if (response.error === "AUTH_REQUIRED") {
         alert("Please login first to add items to cart!");
-        router.push("/auth/login"); // Redirecting to login
+        router.push("/auth/login");
       } else {
         alert("Something went wrong: " + response.error);
       }
@@ -34,32 +40,60 @@ export default function ProductCard({ id, name, price, image, rating }: Product)
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 w-60 shadow-md hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700">
-      <div className="relative w-full h-40 mb-3">
+    <div className="group relative bg-white dark:bg-slate-900 rounded-3xl p-4 w-64 shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 dark:border-slate-800 flex flex-col">
+      
+      {/* ❤️ Wishlist Button (Absolute Position) */}
+      <button 
+        onClick={() => toggleWishlist(id)}
+        className="absolute top-4 right-4 z-20 p-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-full shadow-md hover:scale-110 active:scale-90 transition-all"
+      >
+        <Heart 
+          size={18} 
+          fill={isWishlisted ? "#ef4444" : "none"} 
+          color={isWishlisted ? "#ef4444" : "#64748b"} 
+        />
+      </button>
+
+      {/* 🖼️ Product Image */}
+      <div className="relative w-full h-48 mb-4 overflow-hidden rounded-2xl bg-slate-100">
         <img 
           src={image || "/placeholder.png"} 
           alt={name} 
-          className="w-full h-full object-cover rounded-lg" 
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
         />
       </div>
       
-      <h2 className="text-lg font-bold text-gray-900 dark:text-white truncate">{name}</h2>
-      
-      <div className="flex justify-between items-center mt-2">
-        <p className="text-blue-600 dark:text-blue-400 font-bold">${price}</p>
-        <p className="text-yellow-500 text-sm font-medium">⭐ {rating}</p>
+      {/* 🏷️ Product Info */}
+      <div className="flex-1">
+        <div className="flex justify-between items-start mb-1">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-white truncate pr-2">{name}</h2>
+          <div className="flex items-center gap-1 bg-yellow-50 dark:bg-yellow-900/20 px-2 py-0.5 rounded-lg">
+             <Star size={12} className="fill-yellow-400 text-yellow-400" />
+             <span className="text-xs font-bold text-yellow-700 dark:text-yellow-500">{rating}</span>
+          </div>
+        </div>
+        
+        <p className="text-2xl font-black text-blue-600 dark:text-blue-400">${price}</p>
       </div>
       
+      {/* 🛒 Add to Cart Button */}
       <button
         onClick={handleAdd}
         disabled={loading}
-        className={`w-full mt-4 py-2 rounded-lg font-semibold transition-colors ${
+        className={`w-full mt-5 py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all active:scale-95 ${
           loading 
-            ? "bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed" 
-            : "bg-black dark:bg-white text-white dark:text-black hover:opacity-80"
+            ? "bg-slate-200 dark:bg-slate-800 text-slate-400 cursor-not-allowed" 
+            : "bg-slate-900 dark:bg-white text-white dark:text-black hover:bg-black dark:hover:bg-slate-200 shadow-lg shadow-slate-200 dark:shadow-none"
         }`}
       >
-        {loading ? "Adding..." : "Add to Cart"}
+        {loading ? (
+          <span className="w-5 h-5 border-2 border-slate-400 border-t-transparent rounded-full animate-spin"></span>
+        ) : (
+          <>
+            <ShoppingCart size={18} />
+            <span>Add to Cart</span>
+          </>
+        )}
       </button>
     </div>
   );

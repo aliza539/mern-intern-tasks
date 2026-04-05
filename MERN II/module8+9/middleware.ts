@@ -3,29 +3,39 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const sessionCookie = request.cookies.get("session")?.value;
-  // Agar cookie exist karti hai par empty string hai toh usay null samjhein
-  const sessionEmail = sessionCookie && sessionCookie !== "" ? decodeURIComponent(sessionCookie) : null;
-  
   const roleCookie = request.cookies.get("role")?.value;
-  const isActuallyAdmin = sessionEmail?.toLowerCase() === "admin@store.com" || roleCookie === "admin";
+
+  // 🛑 Strong Check: Agar cookie sirf empty string hai ya "null" string hai toh usay null treat karo
+  const sessionEmail = sessionCookie && sessionCookie !== "" && sessionCookie !== "null" 
+    ? decodeURIComponent(sessionCookie) 
+    : null;
+
+  const userRole = roleCookie && roleCookie !== "" ? roleCookie : null;
+  
+  // Admin Check: Email se ya Role cookie se
+  const isActuallyAdmin = (sessionEmail?.toLowerCase() === "admin@store.com") || (userRole === "admin");
 
   const { pathname } = request.nextUrl;
 
-  // 1. Agar banda LOGIN hai aur Login/Register page pe jaye -> Bhej do dashboard/products pe
+  // ✅ 1. Logged In Users Protection:
+  // Agar banda login hai aur Login/Register page kholne ki koshish kare
   if (sessionEmail && (pathname.startsWith("/auth/login") || pathname.startsWith("/auth/register"))) {
-    const url = isActuallyAdmin ? "/admin/dashboard" : "/products";
-    return NextResponse.redirect(new URL(url, request.url));
+    const destination = isActuallyAdmin ? "/admin/dashboard" : "/products";
+    return NextResponse.redirect(new URL(destination, request.url));
   }
 
-  // 2. Agar banda login NAHI hai (ya session empty hai) aur Private pages khol raha hai
-  if (!sessionEmail) {
-    const privatePaths = ["/cart", "/admin", "/products", "/home"];
-    if (privatePaths.some(path => pathname.startsWith(path))) {
-      return NextResponse.redirect(new URL("/auth/login", request.url));
-    }
+  // 🔒 2. Auth Protection:
+  // Agar banda login NAHI hai aur Private pages access kare
+  const privatePaths = ["/cart", "/admin", "/products", "/home"];
+  const isPrivate = privatePaths.some(path => pathname.startsWith(path));
+
+  if (!sessionEmail && isPrivate) {
+    // Agar banda login nahi hai, toh usey sirf /auth pages access karne do
+    return NextResponse.redirect(new URL("/auth/login", request.url));
   }
 
-  // 3. Admin protection: Sirf admin hi /admin paths access kar sake
+  // 👮 3. Admin-Only Protection:
+  // Agar /admin path hai aur user admin nahi hai
   if (pathname.startsWith("/admin") && !isActuallyAdmin) {
     return NextResponse.redirect(new URL("/products", request.url));
   }
@@ -34,6 +44,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Sabhi private routes ko matcher mein shamil karein
-  matcher: ["/cart/:path*", "/admin/:path*", "/auth/:path*", "/products/:path*", "/home/:path*"],
+  // Static files aur images ko chorr kar baaki sab par apply karein
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };
