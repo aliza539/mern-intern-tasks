@@ -1,0 +1,83 @@
+0 verbose cli D:\Program Files\nodejs\node.exe C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.12.1
+2 info using node@v24.12.0
+3 silly config load:file:C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config load:file:d:\mern-intern-tasks\MERN II\module8+9+(final)\.npmrc
+5 silly config load:file:C:\Users\T470s\.npmrc
+6 silly config load:file:C:\Users\T470s\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm install
+8 verbose argv "install" "--package-lock-only"
+9 verbose logfile logs-max:10 dir:D:\mern-intern-tasks\MERN II\module8+9+(final)\npm-cache\_logs\2026-04-05T14_02_35_278Z-
+10 verbose logfile D:\mern-intern-tasks\MERN II\module8+9+(final)\npm-cache\_logs\2026-04-05T14_02_35_278Z-debug-0.log
+11 silly logfile start cleaning logs, removing 1 files
+12 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+13 silly logfile done cleaning log files
+14 silly idealTree buildDeps
+15 silly fetch manifest @hookform/resolvers@^3.9.0
+16 silly packumentCache full:https://registry.npmjs.org/@hookform%2fresolvers cache-miss
+17 http cache https://registry.npmjs.org/@hookform%2fresolvers 35ms (cache hit)
+18 silly packumentCache full:https://registry.npmjs.org/@hookform%2fresolvers set size:871317 disposed:false
+19 silly fetch manifest react-hook-form@^7.53.0
+20 silly packumentCache full:https://registry.npmjs.org/react-hook-form cache-miss
+21 http cache https://registry.npmjs.org/react-hook-form 19ms (cache hit)
+22 silly packumentCache full:https://registry.npmjs.org/react-hook-form set size:5121246 disposed:false
+23 silly fetch manifest react@19.2.4
+24 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+25 http cache https://registry.npmjs.org/react 41ms (cache hit)
+26 silly packumentCache full:https://registry.npmjs.org/react set size:6585005 disposed:false
+27 silly placeDep ROOT @hookform/resolvers@3.10.0 REPLACE for: module8@0.1.0 want: ^3.9.0
+28 http cache https://registry.npmjs.org/@tailwindcss/oxide-wasm32-wasi/-/oxide-wasm32-wasi-4.2.2.tgz 0ms (cache hit)
+29 silly fetch manifest tailwindcss@^3.4.0
+30 silly packumentCache full:https://registry.npmjs.org/tailwindcss cache-miss
+31 http cache https://registry.npmjs.org/tailwindcss 69ms (cache hit)
+32 silly packumentCache full:https://registry.npmjs.org/tailwindcss set size:10327657 disposed:false
+33 verbose stack Error: could not resolve
+33 verbose stack     at PlaceDep.failPeerConflict (C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\place-dep.js:503:25)
+33 verbose stack     at new PlaceDep (C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\place-dep.js:157:21)
+33 verbose stack     at #buildDepStep (C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:933:18)
+33 verbose stack     at async Arborist.buildIdealTree (C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:170:7)
+33 verbose stack     at async Arborist.reify (C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\reify.js:111:5)
+33 verbose stack     at async Install.exec (C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\lib\commands\install.js:146:5)
+33 verbose stack     at async Npm.exec (C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\lib\npm.js:193:9)
+33 verbose stack     at async module.exports (C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\lib\cli\entry.js:67:5)
+34 error code ERESOLVE
+35 error ERESOLVE could not resolve
+36 error
+37 error While resolving: eslint-plugin-tailwindcss@3.18.2
+37 error Found: tailwindcss@4.2.2
+37 error node_modules/tailwindcss
+37 error   dev tailwindcss@"^4.2.2" from the root project
+37 error   tailwindcss@"4.2.2" from @tailwindcss/node@4.2.2
+37 error   node_modules/@tailwindcss/node
+37 error     @tailwindcss/node@"4.2.2" from @tailwindcss/postcss@4.2.2
+37 error     node_modules/@tailwindcss/postcss
+37 error       dev @tailwindcss/postcss@"^4" from the root project
+37 error   1 more (@tailwindcss/postcss)
+37 error
+37 error Could not resolve dependency:
+37 error peer tailwindcss@"^3.4.0" from eslint-plugin-tailwindcss@3.18.2
+37 error node_modules/eslint-plugin-tailwindcss
+37 error   dev eslint-plugin-tailwindcss@"^3.18.2" from the root project
+37 error
+37 error Conflicting peer dependency: tailwindcss@3.4.19
+37 error node_modules/tailwindcss
+37 error   peer tailwindcss@"^3.4.0" from eslint-plugin-tailwindcss@3.18.2
+37 error   node_modules/eslint-plugin-tailwindcss
+37 error     dev eslint-plugin-tailwindcss@"^3.18.2" from the root project
+37 error
+37 error Fix the upstream dependency conflict, or retry this command with --force or --legacy-peer-deps to accept an incorrect (and potentially broken) dependency resolution.
+38 error
+38 error
+38 error For a full report see:
+38 error D:\mern-intern-tasks\MERN II\module8+9+(final)\npm-cache\_logs\2026-04-05T14_02_35_278Z-eresolve-report.txt
+39 silly unfinished npm timer reify 1775397756304
+40 silly unfinished npm timer reify:loadTrees 1775397756304
+41 silly unfinished npm timer idealTree:buildDeps 1775397756876
+42 silly unfinished npm timer idealTree:node_modules/eslint-plugin-tailwindcss 1775397762113
+43 verbose cwd d:\mern-intern-tasks\MERN II\module8+9+(final)
+44 verbose os Windows_NT 10.0.19045
+45 verbose node v24.12.0
+46 verbose npm  v11.12.1
+47 verbose exit 1
+48 verbose code 1
+49 error A complete log of this run can be found in: D:\mern-intern-tasks\MERN II\module8+9+(final)\npm-cache\_logs\2026-04-05T14_02_35_278Z-debug-0.log
