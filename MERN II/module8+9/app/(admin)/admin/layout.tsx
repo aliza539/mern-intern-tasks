@@ -14,24 +14,40 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     setMounted(true);
   }, []);
 
-  const handleLogout = () => {
-    const paths = ["/", "/admin", "/auth", "/api"];
-    paths.forEach(path => {
-      document.cookie = `session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${path};`;
-      document.cookie = `role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${path};`;
-    });
-    sessionStorage.clear();
-    window.location.replace("/auth/login");
-  };
+  const handleLogout = async () => {
+   
+    await fetch("/api/logout", { method: "POST" });
 
+    
+    const cookies = document.cookie.split(";");
+
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substring(0, eqPos).trim() : cookie.trim();
+        
+   
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/user;`;
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/admin;`;
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/auth;`;
+    }
+
+    
+    localStorage.clear();
+    sessionStorage.clear();
+
+   
+    window.location.href = "/auth/login";
+  };
   if (!mounted) return null;
 
   return (
     <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors">
-      {/* ⌨️ Cmd+K Command Palette (Module 9 Requirement) */}
+      {/*  Cmd+K Command Palette (Module 9 Requirement) */}
       <CommandMenu />
 
-      {/* 📁 Persistent Sidebar */}
+      {/*  Persistent Sidebar */}
       <aside className="w-64 bg-slate-900 text-white p-6 flex flex-col fixed h-full shadow-2xl z-50">
         <div className="mb-10 px-2">
           <h2 className="text-2xl font-bold text-blue-400 italic tracking-tighter">Admin Pro</h2>
@@ -64,9 +80,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </button>
       </aside>
 
-      {/* 🖥️ Main Content Area with Persistent Header */}
+      {/* Main Content Area with Persistent Header */}
       <div className="flex-1 ml-64 flex flex-col">
-        {/* 🔝 Persistent Header (Module 9 Requirement) */}
+        {/*  Persistent Header (Module 9 Requirement) */}
         <header className="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-8 flex items-center justify-between sticky top-0 z-40">
           <div className="flex items-center gap-2 text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-md cursor-pointer hover:ring-1 ring-slate-300 transition-all" 
                onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', {'key': 'k', 'metaKey': true}))}>

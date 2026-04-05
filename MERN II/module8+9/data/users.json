@@ -5,5 +5,12 @@
     "password": "123456",
     "role": "admin",
     "createdAt": "2026-04-04T14:29:38.357Z"
+  },
+  {
+    "id": "1775384491637",
+    "email": "alizajaved194@gmail.com",
+    "password": "1234abcd",
+    "role": "user",
+    "createdAt": "2026-04-05T10:21:31.637Z"
   }
 ]

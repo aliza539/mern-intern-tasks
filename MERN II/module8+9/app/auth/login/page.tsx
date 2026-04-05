@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema } from "@/lib/schemas/auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
+import Link from "next/link";
 export default function LoginPage() {
   const router = useRouter();
   const [serverError, setServerError] = useState("");
@@ -50,6 +50,9 @@ export default function LoginPage() {
         <button type="submit" disabled={isSubmitting} className="w-full bg-black text-white py-2 rounded-lg font-bold">
           {isSubmitting ? "Wait..." : "Login"}
         </button>
+        <p className="text-center text-sm text-gray-500">
+          Dont have an account? <Link href="/auth/register" className="text-blue-600 hover:underline">Register</Link>
+        </p>
       </form>
     </div>
   );

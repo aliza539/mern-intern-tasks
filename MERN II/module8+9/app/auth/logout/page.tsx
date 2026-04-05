@@ -8,7 +8,7 @@ export default function LogoutPage() {
   useEffect(() => {
     const handleLogout = async () => {
       await fetch("/api/logout", { method: "POST" });
-      // Clear any local storage if used (Wishlist remains as it's persist)
+      
       router.push("/auth/login");
       router.refresh();
     };

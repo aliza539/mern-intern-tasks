@@ -7,17 +7,17 @@ import { ApiResponse, CartItem } from "@/app/(user)/user/types";
 export async function addToCartAction(productId: number, qty: number): Promise<ApiResponse<string>> {
   const cookieStore = await cookies();
   
-  // 1. Auth Check: Agar session cookie nahi hai, toh login par bhejo
+ 
   const session = cookieStore.get("session");
   if (!session) {
     return { success: false, error: "AUTH_REQUIRED" };
   }
 
-  // 2. Validate Input using Zod (Module 8 Requirement)
+  
   const result = CartItemSchema.safeParse({ productId, qty });
   if (!result.success) return { success: false, error: "Invalid Data" };
 
-  // 3. Cart Logic
+
   const cart = cookieStore.get("cart");
   const items: CartItem[] = cart ? JSON.parse(cart.value) : [];
 

@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-// Interface zaroori hai errors khatam karne ke liye
+
 interface WishlistState {
   items: number[];
   toggleWishlist: (productId: number) => void;

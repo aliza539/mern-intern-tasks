@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import ThemeToggle from "@/app/component/themeToggle"; // Check karlein ye path sahi hai na?
+import ThemeToggle from "@/app/component/themeToggle"; 
 
 export default function Navbar() {
   const router = useRouter();
@@ -25,16 +25,28 @@ export default function Navbar() {
     }
   }, []);
 
-  const handleLogout = () => {
-    // 🔥 Sabse Powerful Logout: Har possible path se cookie delete karo
-    // Kyunke aapka folder structure nested hai, isliye ye paths lazmi hain
-    const paths = ["/", "/user", "/admin", "/auth", "/api"];
-    paths.forEach(p => {
-      document.cookie = `session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${p};`;
-      document.cookie = `role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${p};`;
-    });
+ const handleLogout = async () => {
+    
+    await fetch("/api/logout", { method: "POST" });
 
-    // ✨ Forceful Redirect: window.location use karne se Middleware fresh check karega
+    
+    const cookies = document.cookie.split(";");
+
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substring(0, eqPos).trim() : cookie.trim();
+        
+        
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/user;`;
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/admin;`;
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/auth;`;
+    }
+
+    localStorage.clear();
+    sessionStorage.clear();
+
     window.location.href = "/auth/login";
   };
 
@@ -45,10 +57,10 @@ export default function Navbar() {
       </Link>
       
       <div className="flex gap-8 items-center font-medium">
-        {/* ✅ PATH FIX: Root se start karein taake nesting ka masla na ho */}
+        {/*  PATH FIX: Root se start karein taake nesting ka masla na ho */}
         <Link href="/user/home" className="hover:text-blue-400 transition-colors">Home</Link>
-        <Link href="/products" className="hover:text-blue-400 transition-colors">Products</Link>
-        <Link href="/cart" className="hover:text-blue-400 transition-colors">Cart</Link>
+        <Link href="/user/products" className="hover:text-blue-400 transition-colors">Products</Link>
+        <Link href="/user/cart" className="hover:text-blue-400 transition-colors">Cart</Link>
 
         {role === "admin" && (
           <Link 

@@ -1,0 +1,23 @@
+0 verbose cli D:\Program Files\nodejs\node.exe C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.12.1
+2 info using node@v24.12.0
+3 silly config load:file:C:\Users\T470s\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config load:file:d:\mern-intern-tasks\MERN II\npm-cache\_npx\cc2145a2fe1558fa\.npmrc
+5 silly config load:file:C:\Users\T470s\.npmrc
+6 silly config load:file:C:\Users\T470s\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm install
+8 verbose argv "install" "--package-lock-only"
+9 verbose logfile logs-max:10 dir:D:\mern-intern-tasks\MERN II\npm-cache\_npx\cc2145a2fe1558fa\npm-cache\_logs\2026-04-05T10_08_28_599Z-
+10 verbose logfile D:\mern-intern-tasks\MERN II\npm-cache\_npx\cc2145a2fe1558fa\npm-cache\_logs\2026-04-05T10_08_28_599Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+13 silly idealTree buildDeps
+14 silly audit bulk request { 'create-next-app': [ '16.2.2' ] }
+15 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 651ms
+16 silly audit report {}
+17 verbose cwd d:\mern-intern-tasks\MERN II\npm-cache\_npx\cc2145a2fe1558fa
+18 verbose os Windows_NT 10.0.19045
+19 verbose node v24.12.0
+20 verbose npm  v11.12.1
+21 verbose exit 0
+22 info ok

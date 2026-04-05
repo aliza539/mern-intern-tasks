@@ -8,7 +8,7 @@ import Footer from "./component/footer";
 
 export default function WelcomePage() {
   const [role, setRole] = useState<string | null>(null);
-  const router = useRouter(); // ✅ Initialize router
+  const router = useRouter(); 
 
   useEffect(() => {
     const getCookie = (name: string) => {
@@ -30,15 +30,30 @@ export default function WelcomePage() {
     }
   }, []);
 
-  const handleLogout = () => {
-    document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie = "role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+ const handleLogout = async () => {
     
-    router.push("/auth/login");
-    // Browser wala timeout use karein
-    window.setTimeout(() => {
-      router.refresh();
-    }, 100);
+    await fetch("/api/logout", { method: "POST" });
+
+    
+    const cookies = document.cookie.split(";");
+
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substring(0, eqPos).trim() : cookie.trim();
+        
+       
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/user;`;
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/admin;`;
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/auth;`;
+    }
+
+    localStorage.clear();
+    sessionStorage.clear();
+
+   
+    window.location.href = "/auth/login";
   };
 
   return (
@@ -58,7 +73,7 @@ export default function WelcomePage() {
           Welcome<span className="text-blue-600">.</span>
         </h1>
 
-        {/* Agar login nahi hai, ya login hai bhi toh options dikhao */}
+    
         <div className="flex flex-col items-center gap-8">
           {!role ? (
             <div className="flex gap-6 scale-110">

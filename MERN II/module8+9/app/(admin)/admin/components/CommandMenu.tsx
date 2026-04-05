@@ -2,13 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { Command } from "cmdk";
 import { useRouter } from "next/navigation";
-import "@/app/styles/cmdk.css"; // Iska basic style niche hai
+import "@/app/styles/cmdk.css"; 
 
 export function CommandMenu() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
-  // Cmd+K Toggle Logic
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -38,16 +37,16 @@ export function CommandMenu() {
           
           <Command.Group heading="Navigation" className="text-xs font-bold text-slate-400 p-2">
             <Command.Item onSelect={() => navigate("/admin/dashboard")} className="p-3 rounded-lg hover:bg-slate-100 cursor-pointer text-slate-700 flex gap-2">
-              📊 Dashboard
+               Dashboard
             </Command.Item>
             <Command.Item onSelect={() => navigate("/user/home")} className="p-3 rounded-lg hover:bg-slate-100 cursor-pointer text-slate-700 flex gap-2">
-              🛒 View Store
+               View Store
             </Command.Item>
           </Command.Group>
 
           <Command.Group heading="Actions" className="text-xs font-bold text-slate-400 p-2">
             <Command.Item className="p-3 rounded-lg hover:bg-red-50 text-red-600 cursor-pointer">
-              🚪 Logout
+               Logout
             </Command.Item>
           </Command.Group>
         </Command.List>
