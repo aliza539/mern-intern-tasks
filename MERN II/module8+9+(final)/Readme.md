@@ -6,15 +6,15 @@ This project is a comprehensive E-commerce solution built with **Next.js 16 (Tur
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
-### 👤 User Side
+###  User Side
 - **Authentication:** Secure Login/Register flow using Zod and React Hook Form.
 - **Product Catalog:** Dynamic product listing with search and filtering.
 - **Shopping Cart:** Full cart functionality (Add/Remove/Update) powered by Zustand.
 - **Checkout Flow:** Seamless transition from cart to order placement.
 
-### 🛡️ Admin Side
+###  Admin Side
 - **Real-time Analytics:** Live counts of Total Users, Active Orders, and Revenue.
 - **Inventory Management:** Interactive data table using TanStack Table with sorting and status updates.
 - **Live Feed:** Real-time order notification feed using simulated API polling.
@@ -22,7 +22,7 @@ This project is a comprehensive E-commerce solution built with **Next.js 16 (Tur
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 - **Framework:** Next.js 16 (App Router)
 - **State Management:** Zustand
 - **Form Handling:** React Hook Form + Zod
@@ -32,7 +32,7 @@ This project is a comprehensive E-commerce solution built with **Next.js 16 (Tur
 
 ---
 
-## ⚙️ Environment Variables & Config
+##  Environment Variables & Config
 Create a `.env.local` file in the root directory and add the following:
 
 | Variable | Description | Default Value |
@@ -42,7 +42,7 @@ Create a `.env.local` file in the root directory and add the following:
 
 ---
 
-## 🔌 Component API & Structure
+##  Component API & Structure
 
 ### 1. `AdminDashboard`
 - **Purpose:** Main analytics hub.
@@ -57,7 +57,7 @@ Create a `.env.local` file in the root directory and add the following:
 
 ---
 
-## 📦 Getting Started
+##  Getting Started
 
 1. **Install Dependencies:**
    ```bash
