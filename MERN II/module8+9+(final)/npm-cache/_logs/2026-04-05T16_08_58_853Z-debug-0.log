@@ -5,13 +5,13 @@
 4 silly config load:file:d:\mern-intern-tasks\MERN II\module8+9+(final)\.npmrc
 5 silly config load:file:C:\Users\T470s\.npmrc
 6 silly config load:file:C:\Users\T470s\AppData\Roaming\npm\etc\npmrc
-7 verbose title npm view next-themes description dist-tags.latest homepage version time
-8 verbose argv "view" "--json" "--" "next-themes" "description" "dist-tags.latest" "homepage" "version" "time"
-9 verbose logfile logs-max:10 dir:D:\mern-intern-tasks\MERN II\module8+9+(final)\npm-cache\_logs\2026-04-05T14_02_12_742Z-
-10 verbose logfile D:\mern-intern-tasks\MERN II\module8+9+(final)\npm-cache\_logs\2026-04-05T14_02_12_742Z-debug-0.log
+7 verbose title npm view lint-staged description dist-tags.latest homepage version time
+8 verbose argv "view" "--json" "--" "lint-staged" "description" "dist-tags.latest" "homepage" "version" "time"
+9 verbose logfile logs-max:10 dir:D:\mern-intern-tasks\MERN II\module8+9+(final)\npm-cache\_logs\2026-04-05T16_08_58_853Z-
+10 verbose logfile D:\mern-intern-tasks\MERN II\module8+9+(final)\npm-cache\_logs\2026-04-05T16_08_58_853Z-debug-0.log
 11 silly logfile start cleaning logs, removing 1 files
 12 silly logfile done cleaning log files
-13 http fetch GET 200 https://registry.npmjs.org/next-themes 634ms (cache revalidated)
+13 http fetch GET 200 https://registry.npmjs.org/lint-staged 508ms (cache revalidated)
 14 verbose cwd d:\mern-intern-tasks\MERN II\module8+9+(final)
 15 verbose os Windows_NT 10.0.19045
 16 verbose node v24.12.0
