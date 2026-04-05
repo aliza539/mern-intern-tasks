@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Command } from "cmdk";
 import { useRouter } from "next/navigation";
-import "@/app/styles/cmdk.css"; 
+import "@/app/Styles/cmdk.css"; 
 
 export function CommandMenu() {
   const [open, setOpen] = useState(false);
