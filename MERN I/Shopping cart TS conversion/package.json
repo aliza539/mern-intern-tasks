@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "start": "node dist/main.js"
+    "build": "node init && tsc",
+    "start": "node init && node dist/main.js"
   },
   "devDependencies": {
     "typescript": "^5.9.3"
