@@ -10,7 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/aliza539/Bank-Account-Simulator.git"
   },
-  "keywords": ["javascript", "closures", "prototypes", "oop", "factory-pattern"],
+  "keywords": [
+    "javascript",
+    "closures",
+    "prototypes",
+    "oop",
+    "factory-pattern"
+  ],
   "author": "Aliza",
   "license": "MIT",
   "type": "module",
